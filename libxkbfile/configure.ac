@@ -34,10 +34,10 @@ AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AC_PROG_LIBTOOL
 
 # Require X.Org macros 1.8 or later for AC_PROG_INSTALL
-m4_ifndef([XORG_MACROS_VERSION],
-          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.8)
-XORG_DEFAULT_OPTIONS
+#m4_ifndef([XORG_MACROS_VERSION],
+#          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
+#XORG_MACROS_VERSION(1.8)
+#XORG_DEFAULT_OPTIONS
 
 # Checks for library functions.
 AC_CHECK_FUNC(strcasecmp, [], AC_DEFINE([NEED_STRCASECMP], 1,
@@ -46,7 +46,7 @@ AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
 				       ['Unlocked stdio']), [])
 
 # Obtain compiler/linker options for depedencies
-PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
+PKG_CHECK_MODULES(XKBFILE, kbproto)
 
 AC_CONFIG_FILES([Makefile
 		src/Makefile
